@@ -1,10 +1,11 @@
-FROM python:3.9.10
+FROM python:3.9.13
 
 ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-RUN pip install poetry==1.1
+RUN /opt/venv/bin/python3 -m pip install --upgrade pip
+RUN pip install poetry
 
 ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /wait-for-it.sh
 
